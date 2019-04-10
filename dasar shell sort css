@@ -1,0 +1,32 @@
+#steps {
+  margin-top: 15px;
+  font-family: monospace;
+  line-height: 150%;
+  font-size: 16px;
+}
+
+.tab_1 {
+  margin-left: 20px;
+}
+
+.tab_2 {
+  margin-left: 40px;
+}
+
+.tab_3 {
+  margin-left: 60px;
+}
+
+.tab_5 {
+  margin-left: 100px;
+}
+
+.shade {
+  opacity: 0.35;
+}
+
+.focus {
+  color: #F00;
+  font-size: larger;
+  font-weight: bold;
+}
