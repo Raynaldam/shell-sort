@@ -75,7 +75,7 @@ document.getElementById('btn').onclick = function(){
     inputs[i] *= 1;
   }
   n = inputs;
-  m('http://kurungkurawal.com');
+  m('skuy living');
   m('Posisi awal: ' + n);
   m('Jumlah Data: ' + n.length);
   doShellSort(n);
