@@ -1,0 +1,91 @@
+var n = [2,5,3,9,10,6,1,11,7,4 ];
+var steps = [];
+var m = function(str, tab){
+  if(typeof tab == 'undefined'){
+    tab = 0;
+  }
+  steps.push('<span class="tab_' + tab + '">' 
+             + str + '</span>');
+}
+
+var arrstr = function(arr, e){
+  if(typeof e == 'undefined'){
+    e = [];
+  }
+  var str = '', tmp;
+  for(var i = 0; i < arr.length; i++){
+    tmp = (e.indexOf(arr[i]) > -1) 
+      ? '<span class="focus">' + arr[i] + '</span>' 
+      : '<span class="shade">' + arr[i] + '</span>';
+    if(str == ''){
+      str = tmp;
+    } else {
+      str += ' ' + tmp;
+    }
+  }
+  return str;
+}
+
+function doShellSort(arr){
+  var n = arr.length;
+  var getDistance = function(length){
+    return parseInt(length / 2);
+  }
+  var len = arr.length;
+  var distance = getDistance(len); 
+  
+  var i,j,k,l;
+  var msg;
+  while(distance > 0){
+    m('jarak: ' + distance);
+    m('Data: ' + arr);
+    
+    for(i = distance; i < len; i+=distance){   
+      j = i;
+      m('posisi dari ' + j);
+      while(j > 0){
+        k = arr[j];
+        l = arr[j - distance];
+        m(l + ' dan ' + k, 2);
+        msg = ' ' + arrstr(arr, [l,k]);
+        m(msg, 3);
+        
+        if((arr[j - distance] > arr[j])){
+          arr[j] = l;
+          arr[j - distance] = k;
+          m("tukar posisi, " + arrstr(arr, [l,k]), 5);
+        }
+        j -= distance;
+      }
+    }
+    
+    distance = getDistance(distance);
+    //distance -= 1;
+    m('------');
+  }
+  
+  return arr;
+}
+
+document.getElementById('btn').onclick = function(){
+  console.clear();
+  var inputs = document.getElementById('input').value.split(',');
+  steps = [];
+  for(var i in inputs){
+    inputs[i] *= 1;
+  }
+  n = inputs;
+  m('http://kurungkurawal.com');
+  m('Posisi awal: ' + n);
+  m('Jumlah Data: ' + n.length);
+  doShellSort(n);
+  m('============================');
+  m('Selesai, hasil akhir');
+  m('' + n);
+  var log = document.getElementById('steps');
+  var logs = '';
+  for(var i in steps){
+    logs += steps[i] + '<br/>';
+  }
+  log.innerHTML = logs;
+};
